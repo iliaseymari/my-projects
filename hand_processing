@@ -1,0 +1,32 @@
+# import the opencv library 
+import cv2 
+import mediapipe as mp
+# define a video capture object 
+vid = cv2.VideoCapture(0) 
+mphands = mp.solutions.hands
+hands = mphands.Hands()
+mpdrow = mp.solutions.drawing_utils
+while(True): 
+      
+    # Capture the video frame 
+    # by frame 
+    ret, frame = vid.read()
+    imgrgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    results = hands.process(imgrgb)
+    if results.multi_hand_landmarks:
+        for h in results.multi_hand_landmarks:
+            mpdrow.draw_landmarks(frame, h, mphands.HAND_CONNECTIONS)
+  
+    # Display the resulting frame 
+    pic = cv2.imshow('ilia', frame) 
+      
+    # the 'q' button is set as the 
+    # quitting button you may use any 
+    # desired button of your choice 
+    if cv2.waitKey(1) & 0xFF == ord('q'): 
+        break
+        
+# After the loop release the cap object 
+vid.release() 
+# Destroy all the windows 
+cv2.destroyAllWindows()
