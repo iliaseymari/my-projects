@@ -21,4 +21,8 @@ if user_input != '':
         with col2:
             st.subheader(names)
             st.write(f, '$')
+
+#In this app you can search on pruduct and this app shows a photo and price of that product 
+#but you shouldn't run the project you should open the terminal and cd to your files, you put this project on that.
+#after write "streamlit run web_scraping" in the treminal after project opens a web page after you can search, Thank you for taking the time to read this text🙏
         
